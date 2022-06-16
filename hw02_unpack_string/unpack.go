@@ -20,12 +20,13 @@ func Unpack(s string) (string, error) {
 			shield = true
 			continue
 		}
-		if shield {
+		switch {
+		case shield:
 			shield = false
 			sNew += substring
 			substring = string(letter)
 			letterIndicator = true
-		} else if unicode.IsDigit(letter) {
+		case unicode.IsDigit(letter):
 			if !letterIndicator || numIndicator {
 				return "", ErrInvalidString
 			}
@@ -33,11 +34,11 @@ func Unpack(s string) (string, error) {
 			sNew += strings.Repeat(substring, num)
 			numIndicator = true
 			letterIndicator = false
-		} else if letterIndicator {
+		case letterIndicator:
 			sNew += substring
 			substring = string(letter)
 			numIndicator = false
-		} else {
+		default:
 			substring = string(letter)
 			letterIndicator = true
 			numIndicator = false
