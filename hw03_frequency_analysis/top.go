@@ -60,5 +60,6 @@ func Top10(s string) []string {
 	for i := 0; i < l; i++ {
 		result = append(result, res[i].name)
 	}
+
 	return result
 }
