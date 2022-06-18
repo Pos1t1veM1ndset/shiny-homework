@@ -14,12 +14,14 @@ type word struct {
 type byAmount []word // to make custom sort custom slice is needed
 
 func (a byAmount) Len() int { return len(a) }
+
 func (a byAmount) Less(i, j int) bool { // by amount and name in 1 function
 	if a[i].amount == a[j].amount {
 		return a[i].name < a[j].name // sort names in order
 	}
 	return a[i].amount > a[j].amount // sort amount in reverse order
 }
+
 func (a byAmount) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
 
 func Top10(s string) []string {
