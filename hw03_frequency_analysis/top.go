@@ -17,9 +17,8 @@ func (a byAmount) Len() int { return len(a) }
 func (a byAmount) Less(i, j int) bool { // by amount and name in 1 function
 	if a[i].amount == a[j].amount {
 		return a[i].name < a[j].name // sort names in order
-	} else {
-		return a[i].amount > a[j].amount // sort amount in reverse order
 	}
+	return a[i].amount > a[j].amount // sort amount in reverse order
 }
 func (a byAmount) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
 
@@ -60,6 +59,5 @@ func Top10(s string) []string {
 	for i := 0; i < l; i++ {
 		result = append(result, res[i].name)
 	}
-
 	return result
 }
