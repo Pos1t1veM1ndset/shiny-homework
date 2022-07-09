@@ -63,6 +63,7 @@ func (l *list) PushBack(v interface{}) *ListItem {
 	l.lastElem = li
 	return li
 }
+
 func (l *list) Remove(i *ListItem) {
 	l.length--
 	if i.Prev == nil {
