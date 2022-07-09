@@ -23,7 +23,6 @@ type cacheItem struct {
 }
 
 func (c *lruCache) Set(key Key, v interface{}) (ok bool) {
-	//mux := &sync.RWMutex{}
 	c.mux.Lock()
 	val, ok := c.items[key]
 	if !ok {
@@ -44,7 +43,6 @@ func (c *lruCache) Set(key Key, v interface{}) (ok bool) {
 }
 
 func (c lruCache) Get(key Key) (value interface{}, ok bool) {
-	//mux := &sync.RWMutex{}
 	c.mux.Lock()
 	val, ok := c.items[key]
 	if ok {

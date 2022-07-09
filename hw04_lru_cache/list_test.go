@@ -69,22 +69,22 @@ func TestList(t *testing.T) {
 			if i == 50 {
 				middle = a
 			}
-		} //[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+		} // [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 		elems := make([]int, 0, l.Len())
 		for i := l.Front(); i != nil; i = i.Next {
 			elems = append(elems, i.Value.(int))
 		}
 		require.Equal(t, []int{10, 20, 30, 40, 50, 60, 70, 80, 90, 100}, elems)
 		require.Equal(t, 50, middle.Value)
-		l.MoveToFront(middle) //[50, 10, 20, 30, 40, 60, 70, 80, 90, 100]
-		l.Remove(middle)      //[10, 20, 30, 40, 60, 70, 80, 90, 100]
+		l.MoveToFront(middle) // [50, 10, 20, 30, 40, 60, 70, 80, 90, 100]
+		l.Remove(middle)      // [10, 20, 30, 40, 60, 70, 80, 90, 100]
 		require.Equal(t, 60, l.Front().Next.Next.Next.Next.Value)
 		require.Equal(t, 40, l.Front().Next.Next.Next.Value)
-		l.Remove(l.Front()) //[20, 30, 40, 60, 70, 80, 90, 100]
-		l.Remove(l.Back())  //[20, 30, 40, 60, 70, 80, 90]
+		l.Remove(l.Front()) // [20, 30, 40, 60, 70, 80, 90, 100]
+		l.Remove(l.Back())  // [20, 30, 40, 60, 70, 80, 90]
 		require.Equal(t, 70, l.Front().Next.Next.Next.Next.Value)
-		l.MoveToFront(l.Back())  //[90, 20, 30, 40, 60, 70, 80]
-		l.MoveToFront(l.Front()) //[90, 20, 30, 40, 60, 70, 80]
+		l.MoveToFront(l.Back())  // [90, 20, 30, 40, 60, 70, 80]
+		l.MoveToFront(l.Front()) // [90, 20, 30, 40, 60, 70, 80]
 		require.Equal(t, 80, l.Back().Value)
 		elems = make([]int, 0, l.Len())
 		for i := l.Back(); i != nil; i = i.Prev {

@@ -20,7 +20,6 @@ type list struct {
 	length    int
 	firstElem *ListItem
 	lastElem  *ListItem
-	//s         *sync.RWMutex
 }
 
 func (l list) Len() int {
